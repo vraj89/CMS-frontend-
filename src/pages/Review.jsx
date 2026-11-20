@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Check, CheckCircle2, ExternalLink, FileText, RotateCcw, ShieldCheck, X } from 'lucide-react';
+import { Check, CheckCircle2, ExternalLink, FileText, RotateCcw, ShieldCheck } from 'lucide-react';
 import api, { errorMessage } from '../api/axios';
 import { useAuth } from '../context/AuthContext';
 import Badge from '../components/Badge';
@@ -141,10 +141,11 @@ export default function Review() {
                     {item.project_name} · submitted by {item.creator} · {formatDateTime(item.created_at)}
                   </p>
                 </div>
-                <a href={item.entity_type === 'media' ? item.file_url : undefined} target="_blank" rel="noreferrer"
-                   className={`text-xs font-medium text-brand-600 hover:underline ${item.entity_type === 'content' ? 'pointer-events-none opacity-0' : ''}`}>
-                  <span className="inline-flex items-center gap-1">Open asset <ExternalLink className="h-3 w-3" /></span>
-                </a>
+                {item.entity_type === 'media' && (
+                  <a href={item.file_url} target="_blank" rel="noreferrer" className="text-xs font-medium text-brand-600 hover:underline">
+                    <span className="inline-flex items-center gap-1">Open asset <ExternalLink className="h-3 w-3" /></span>
+                  </a>
+                )}
               </div>
 
               <div className="px-5 py-4">
@@ -201,9 +202,6 @@ export default function Review() {
                       </button>
                       <button onClick={() => { setActive(item.id); setMode('revision'); setComment(''); }} className="btn-warning">
                         <RotateCcw className="h-4 w-4" /> Request revision
-                      </button>
-                      <button onClick={() => { setActive(item.id); setMode('approved'); setComment(''); }} className="btn-secondary ml-auto">
-                        <X className="h-4 w-4" /> Comment
                       </button>
                     </div>
                   )}
