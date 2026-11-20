@@ -134,7 +134,7 @@ Follow these nine steps exactly — each one is API-verified.
 8. If revision: **logout → login as the creator** → resolve it from the Content/Media page → version becomes **v2**.
 9. **Logout → login as `admin@prelytix.com`** → **Payments → Mark paid** → **Audit Logs** lists every action above with user names and timestamps.
 
-Screenshots of the login screen, admin dashboard and client review portal live in `frontend/docs/screenshots/`.
+Screenshots of the login screen, admin dashboard and client review portal live in `docs/screenshots/`.
 
 ---
 
